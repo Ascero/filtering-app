@@ -1,0 +1,38 @@
+<div class="FormBuilder-container">
+  <div class="FormBuilder-header">
+    <h4>CUSTOMER FILTER</h4>
+    <button (click)="discardEvents()" mat-button>Discard filters</button>
+  </div>
+
+  @if (availableFilterEvents()?.events?.length) {
+    <div class="FormBuilder-formContainer">
+      <form [formGroup]="eventsForm">
+        <div formArrayName="events" class="FormBuilder-formSteps">
+          @for (
+            selectedEvent of selectedEvents().controls;
+            track $index;
+            let i = $index
+          ) {
+            <app-filter-events-form-step
+              [eventForm]="selectedEvent"
+              [eventIndex]="i"
+              [availableEvents]="availableFilterEvents()?.events ?? []"
+              (removeEvent)="removeEvent(i)"
+              (addProperty)="addProperty(i)"
+              (removeProperty)="removeProperty($event, i)"
+              (duplicateEvent)="duplicateEvent(i)"
+              (updateProperty)="updateExistingPropertyType($event, i)"
+            ></app-filter-events-form-step>
+          }
+        </div>
+      </form>
+      <div class="FormBuilder-funnelActions">
+        <button (click)="addEvent()" mat-button>+ ADD FUNNEL STEP</button>
+      </div>
+
+      <div class="FormBuilder-submit">
+        <button (click)="logFormValue()" mat-button>Apply filters</button>
+      </div>
+    </div>
+  }
+</div>
