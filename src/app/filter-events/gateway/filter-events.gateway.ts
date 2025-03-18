@@ -11,7 +11,7 @@ export class FilterEventsGateway {
     'https://br-fe-assignment.github.io/customer-events/events.json';
   private readonly httpClient = inject(HttpClient);
 
-  public getFilterEvents(): Observable<IApiEventData> {
+  public getFilterEvents$(): Observable<IApiEventData> {
     return this.httpClient.get<IApiEventData>(this.filterEventUrl);
   }
 }

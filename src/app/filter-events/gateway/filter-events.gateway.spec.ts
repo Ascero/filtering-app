@@ -38,7 +38,7 @@ describe('FilterEventsGateway', () => {
   });
 
   it('should get filter events from the API', () => {
-    service.getFilterEvents().subscribe((data) => {
+    service.getFilterEvents$().subscribe((data) => {
       expect(data).toEqual(mockResponse);
     });
 

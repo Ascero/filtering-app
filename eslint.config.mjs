@@ -67,8 +67,5 @@ export default defineConfig([
     languageOptions: {
       parser: parser,
     },
-    rules: {
-      "@angular-eslint/template/no-call-expression": "warn",
-    },
   },
 ]);

@@ -1,0 +1,37 @@
+<div [formGroup]="conditionsForm()" class="Conditions-container">
+  <mat-form-field appearance="outline">
+    <mat-label>Select a operator</mat-label>
+    <mat-select formControlName="operator">
+      @if (propertyForm().controls.type.value === "string") {
+        @for (operator of stringOperators; track $index) {
+          <mat-option [value]="operator">{{ operator }}</mat-option>
+        }
+      } @else {
+        @for (operator of numberOperators; track $index) {
+          <mat-option [value]="operator">{{ operator }}</mat-option>
+        }
+      }
+    </mat-select>
+  </mat-form-field>
+
+  @if (conditionsForm().controls.operator.value !== numberOperator.InBetween) {
+    @if (propertyForm().controls.type.value === "string") {
+      <mat-form-field appearance="outline">
+        <mat-label>Add a value</mat-label>
+        <input formControlName="value" matInput type="text" />
+      </mat-form-field>
+    } @else {
+      <mat-form-field appearance="outline">
+        <mat-label>Add a number</mat-label>
+        <input formControlName="value" matInput type="number" />
+      </mat-form-field>
+    }
+  } @else {
+    <!-- I will just handle this case like this to save some time,
+      but could be done with the proper form group for it -->
+    <mat-form-field appearance="outline">
+      <mat-label>Add a range of number</mat-label>
+      <input formControlName="value" matInput type="number" />
+    </mat-form-field>
+  }
+</div>
