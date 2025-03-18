@@ -6,6 +6,7 @@ import { IApiEventData } from '../interfaces/filter-events.interface';
 @Injectable({
   providedIn: 'root',
 })
+// Created this service to have it separated totally separated from the rest and just handle httpClient request here
 export class FilterEventsGateway {
   private readonly filterEventUrl =
     'https://br-fe-assignment.github.io/customer-events/events.json';

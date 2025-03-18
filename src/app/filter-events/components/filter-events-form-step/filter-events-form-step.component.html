@@ -20,6 +20,8 @@
               formControlName="type"
               (selectionChange)="updateAvailableProperties($event)"
             >
+              <!-- As options would be good to have a solution where we show
+              translated / easy to understand words instead of just the plain options from the backend -->
               @for (event of availableEvents(); track event.type) {
                 <mat-option [value]="event.type">
                   {{ event.type }}

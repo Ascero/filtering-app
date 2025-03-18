@@ -10,7 +10,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { findSelectedPropertiesByType } from '../../../shared/helper/find-selected-property.helper';
-import { IFilterEvent } from '../../interfaces/filter-events.interface';
+import {
+  IEventProperty,
+  IFilterEvent,
+} from '../../interfaces/filter-events.interface';
 import { EventForm } from '../filter-events-form-builder/filter-events-form-builder.component';
 import { FilterEventsPropertiesComponent } from '../filter-events-properties/filter-events-properties.component';
 @Component({
@@ -37,7 +40,7 @@ export class FilterEventsFormStepComponent {
   public readonly addProperty = output<void>();
   public readonly removeProperty = output<number>();
   public readonly updateProperty = output<{
-    selectedPropertyType: 'string' | 'number' | null;
+    selectedPropertyType: IEventProperty['type'] | null;
     propertyIndex: number;
   }>();
 
@@ -67,7 +70,7 @@ export class FilterEventsFormStepComponent {
   }
 
   public updateExistingProperty(updatedProperty: {
-    selectedPropertyType: 'string' | 'number' | null;
+    selectedPropertyType: IEventProperty['type'] | null;
     propertyIndex: number;
   }) {
     this.updateProperty.emit(updatedProperty);

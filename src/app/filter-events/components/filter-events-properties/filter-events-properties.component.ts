@@ -36,7 +36,7 @@ export class FilterEventsPropertiesComponent {
 
   public readonly addProperty = output<void>();
   public readonly updateProperty = output<{
-    selectedPropertyType: 'string' | 'number' | null;
+    selectedPropertyType: IEventProperty['type'] | null;
     propertyIndex: number;
   }>();
   public readonly removeProperty = output<number>();

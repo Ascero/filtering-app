@@ -6,7 +6,7 @@
 .FormStep {
   &-container {
     width: 100%;
-    background: white;
+    background: #ffffff;
     display: flex;
     flex-direction: column;
     padding: 1rem;
@@ -25,7 +25,7 @@
 
   &-selection {
     display: flex;
-    margin-top: 0.5rem;
+    margin-top: 2rem;
     gap: 8px;
   }
 
