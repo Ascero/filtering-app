@@ -1,0 +1,16 @@
+.Properties {
+  &-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-eventForm {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-propertiesForm {
+    display: flex;
+    gap: 8px;
+  }
+}

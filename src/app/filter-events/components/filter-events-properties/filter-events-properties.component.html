@@ -1,0 +1,42 @@
+<div class="Properties-container">
+  @if (eventProperties().length) {
+    <div class="Properties-eventForm" [formGroup]="eventForm()">
+      @for (properties of formProperties(); track $index; let i = $index) {
+        <div [formGroup]="properties" class="Properties-propertiesForm">
+          <mat-form-field appearance="outline">
+            <mat-label>Select an attribute</mat-label>
+            <mat-select
+              formControlName="property"
+              (selectionChange)="updatePropertyType($event, i)"
+            >
+              @for (prop of eventProperties(); track $index) {
+                <mat-option [value]="prop?.property">{{
+                  prop?.property
+                }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          @if (formProperties()[i].controls.type.value) {
+            <app-filter-events-conditions
+              [propertyForm]="formProperties()[i]"
+            ></app-filter-events-conditions>
+          }
+
+          <button mat-mini-fab (click)="removeExistingProperty(i)">
+            <mat-icon fontIcon="close"></mat-icon>
+          </button>
+        </div>
+      }
+    </div>
+    <div class="Properties-actions">
+      <button (click)="addNewProperty()" mat-button>
+        @if (formProperties().length > 0) {
+          Refine more
+        } @else {
+          + Add an event attribute
+        }
+      </button>
+    </div>
+  }
+</div>
