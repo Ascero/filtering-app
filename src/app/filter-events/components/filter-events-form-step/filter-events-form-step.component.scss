@@ -1,0 +1,36 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.FormStep {
+  &-container {
+    width: 100%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  &-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &-headerActions {
+    display: flex;
+    gap: 4px;
+  }
+
+  &-selection {
+    display: flex;
+    margin-top: 0.5rem;
+    gap: 8px;
+  }
+
+  &-divider {
+    margin-top: 1rem;
+    border-top: 1px solid rgb(240, 236, 236);
+  }
+}

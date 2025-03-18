@@ -1,0 +1,44 @@
+@if (availableEvents().length) {
+  <div [formGroup]="eventForm()" class="FormStep-container">
+    <div class="FormStep-header">
+      <label>Step {{ eventIndex() + 1 }}:</label>
+      <div class="FormStep-headerActions">
+        <button mat-mini-fab (click)="removeExistingEvent()">
+          <mat-icon fontIcon="delete"></mat-icon>
+        </button>
+        <button mat-mini-fab (click)="duplicateExistingEvent()">
+          <mat-icon fontIcon="content_copy"></mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="FormStep-selection">
+      <div>
+        <div class="FormStep-selectArea">
+          <mat-form-field appearance="outline">
+            <mat-label>Select an event</mat-label>
+            <mat-select
+              formControlName="type"
+              (selectionChange)="updateAvailableProperties($event)"
+            >
+              @for (event of availableEvents(); track event.type) {
+                <mat-option [value]="event.type">
+                  {{ event.type }}
+                </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      @if (availablePropertiesForSelectedEvent().length) {
+        <app-filter-events-properties
+          [eventForm]="eventForm()"
+          [eventProperties]="availablePropertiesForSelectedEvent()"
+          (addProperty)="addNewProperty()"
+          (removeProperty)="removeExistingProperty($event)"
+          (updateProperty)="updateExistingProperty($event)"
+        ></app-filter-events-properties>
+      }
+    </div>
+    <hr class="FormStep-divider" />
+  </div>
+}
